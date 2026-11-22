@@ -15,11 +15,18 @@
   display: none !important;
 }
 
+html,
 body {
   width: 300px;
   min-height: 0;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+}
+
+.glass-bg::before,
+.glass-bg::after {
+  display: none;
 }
 
 svg.lucide {

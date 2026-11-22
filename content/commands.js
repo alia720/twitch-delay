@@ -10,13 +10,9 @@ const applyDelay = (delay) => {
 
   const message = describe(delay);
   applySetting(delay);
-  saveDelay(delay);
   return { ok: true, message };
 };
 
 chrome.runtime.onMessage.addListener(({ delay, measure }, sender, reply) => {
-  if (measure) return reply(measureDelay());
-  const status = applyDelay(delay);
-  saveStatus(status);
-  reply(status);
+  reply(measure ? { ...measureDelay(), delay: currentDelay } : applyDelay(delay));
 });

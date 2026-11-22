@@ -1,17 +1,9 @@
 const MAX_DELAY = 3600;
+const DELAY_KEY = 'twitchDelay';
 
-let currentDelay = 0;
+let currentDelay = Number(sessionStorage.getItem(DELAY_KEY)) || 0;
 
-const applySetting = (delay = 0) => {
+const applySetting = (delay) => {
   currentDelay = delay;
+  sessionStorage.setItem(DELAY_KEY, delay);
 };
-
-const saveDelay = (delay) => chrome.storage.local.set({ delay });
-
-const saveStatus = (status) => chrome.storage.local.set({ status });
-
-chrome.storage.local.get({ delay: 0 }, ({ delay }) => applySetting(delay));
-
-chrome.storage.onChanged.addListener(({ delay }) => {
-  if (delay) applySetting(delay.newValue);
-});
