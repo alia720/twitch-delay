@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Twitch Delay",
+  "version": "3.1.0",
+  "description": "Watch Twitch streams a set amount of time behind live.",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.twitch.tv/*"
+      ],
+      "js": [
+        "content/format.js",
+        "content/stream.js",
+        "content/settings.js",
+        "content/recorder.js",
+        "content/measure.js",
+        "content/commands.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://www.twitch.tv/*"
+      ],
+      "js": [
+        "content/audio.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start"
+    }
+  ]
+}

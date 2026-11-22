@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-density="compact">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="vendor/glasskit.min.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body class="glass-bg">
+  <main class="glass-card glass-card--glow panel">
+    <header>
+      <i data-lucide="timer"></i>
+      <h1>Twitch Delay</h1>
+    </header>
+
+    <section class="readout" aria-live="polite">
+      <strong id="readout-value">—</strong>
+      <span id="readout-label">open a Twitch stream</span>
+    </section>
+
+    <form>
+      <label class="glass-label" for="amount">Delay</label>
+      <div class="field">
+        <input class="glass-input" id="amount" name="amount" type="number" min="0" step="0.5" value="15" required>
+        <select class="glass-select" name="unit" aria-label="Unit">
+          <option value="1">seconds</option>
+          <option value="60">minutes</option>
+          <option value="3600">hours</option>
+        </select>
+      </div>
+      <div class="actions">
+        <button class="glass-btn glass-btn--primary" type="submit"><i data-lucide="check"></i>Apply</button>
+        <button class="glass-btn glass-btn--tertiary" type="button" id="live"><i data-lucide="radio"></i>Live</button>
+      </div>
+    </form>
+
+    <p class="status" id="status" role="status" hidden></p>
+  </main>
+
+  <script src="vendor/lucide.min.js"></script>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
